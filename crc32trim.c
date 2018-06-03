@@ -1,16 +1,16 @@
 /* crc32trim.c
-
-  Copyright (C) 2016 Matt Cover
-
-  For conditions of distribution and use, see copyright notice in crc32trim.h
-  or LICENSE.
-
-  This code is borrows heavily from crc32.c found in zlib version 1.2.8, but
-  has been altered.
-
-  Thanks to Mark Adler <madler@alumni.caltech.edu> for writing zlib's crc32.c,
-  his posts about crc32_combine(), and answering questions of the community.
-*/
+ *
+ * Copyright (C) 2016-2018 Matt Cover
+ *
+ * For conditions of distribution and use, see copyright notice in crc32trim.h
+ * or LICENSE.
+ *
+ * This code is borrows heavily from crc32.c found in zlib version 1.2.8, but
+ * has been altered.
+ *
+ * Thanks to Mark Adler <madler@alumni.caltech.edu> for writing zlib's crc32.c,
+ * his posts about crc32_combine(), and answering questions of the community.
+ */
 
 #include <stdio.h>
 
