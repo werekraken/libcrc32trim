@@ -25,10 +25,18 @@
 #ifndef _CRC32TRIM_H_
 #define _CRC32TRIM_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 extern unsigned long crc32_trim_trailing(
     unsigned long crc1,
     unsigned long crc2,
     int len2
 );
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // _CRC32TRIM_H_
