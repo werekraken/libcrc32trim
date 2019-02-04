@@ -1,6 +1,6 @@
 /* crc32trim.h
  *
- * Copyright (C) 2016-2018 Matt Cover
+ * Copyright (C) 2016-2019 Matt Cover
  *
  * This software is provided 'as-is', without any express or implied
  * warranty. In no event will the authors be held liable for any damages

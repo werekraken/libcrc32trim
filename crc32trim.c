@@ -1,6 +1,6 @@
 /* crc32trim.c
  *
- * Copyright (C) 2016-2018 Matt Cover
+ * Copyright (C) 2016-2019 Matt Cover
  *
  * For conditions of distribution and use, see copyright notice in crc32trim.h
  * or LICENSE.
