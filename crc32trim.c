@@ -12,8 +12,6 @@
  * his posts about crc32_combine(), and answering questions of the community.
  */
 
-#include <stdio.h>
-
 #define GF2_DIM 32      /* dimension of GF(2) vectors (length of CRC) */
 
 /* ========================================================================= */
