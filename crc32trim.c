@@ -48,7 +48,7 @@ static void gf2_matrix_square(
 unsigned long crc32_trim_trailing(
     unsigned long crc1,
     unsigned long crc2,
-    int len2
+    long len2
 ) {
     int n;
     unsigned long row;
