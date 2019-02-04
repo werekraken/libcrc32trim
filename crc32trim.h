@@ -30,9 +30,9 @@ extern "C" {
 #endif
 
 extern unsigned long crc32_trim_trailing(
-    unsigned long crc1,
-    unsigned long crc2,
-    long len2
+    unsigned long crcAB,
+    unsigned long crcB,
+    long lenB
 );
 
 #ifdef __cplusplus

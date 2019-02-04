@@ -45,7 +45,7 @@ static void gf2_matrix_square(
 }
 
 /* ========================================================================= */
-unsigned long crc32_trim_trailing(
+static unsigned long crc32_trim_trailing_(
     unsigned long crc1,
     unsigned long crc2,
     long len2
@@ -99,4 +99,13 @@ unsigned long crc32_trim_trailing(
     } while (len2 != 0);
 
     return crc1;
+}
+
+/* ========================================================================= */
+unsigned long crc32_trim_trailing(
+    unsigned long crcAB,
+    unsigned long crcB,
+    long lenB
+) {
+    return crc32_trim_trailing_(crcAB, crcB, lenB);
 }
