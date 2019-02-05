@@ -12,6 +12,10 @@
  * his posts about crc32_combine(), and answering questions of the community.
  */
 
+#ifndef NO_ZLIB
+#include "zlib.h"
+#endif
+
 #define GF2_DIM 32      /* dimension of GF(2) vectors (length of CRC) */
 
 /* ========================================================================= */
@@ -98,6 +102,17 @@ static unsigned long crc32_trim_trailing_(
 
     return crc1;
 }
+
+#ifndef NO_ZLIB
+/* ========================================================================= */
+unsigned long crc32_trim_leading(
+    unsigned long crcAB,
+    unsigned long crcA,
+    long lenB
+) {
+    return crc32_combine(crcA, crcAB, lenB);
+}
+#endif
 
 /* ========================================================================= */
 unsigned long crc32_trim_trailing(

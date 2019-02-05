@@ -29,6 +29,14 @@
 extern "C" {
 #endif
 
+#ifndef NO_ZLIB
+extern unsigned long crc32_trim_leading(
+    unsigned long crcAB,
+    unsigned long crcA,
+    long lenB
+);
+#endif
+
 extern unsigned long crc32_trim_trailing(
     unsigned long crcAB,
     unsigned long crcB,

@@ -8,7 +8,7 @@ all: libcrc32trim.so
 	$(CC) $(CFLAGS) -fpic -c -o $@ $<
 
 libcrc32trim.so: crc32trim.o
-	$(CC) -shared -o libcrc32trim.so crc32trim.o
+	$(CC) -shared -o libcrc32trim.so crc32trim.o -lz
 
 .PHONY: clean
 clean:
