@@ -65,4 +65,4 @@ crcA = crc32_trim_trailing(crcAB, crcB, lenB);
 
 ## License
 
-This code is under the zlib license, permitting free commercial use.
+_libcrc32trim_ is available as open source under the terms of the [zlib license](LICENSE).
