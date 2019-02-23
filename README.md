@@ -1,7 +1,5 @@
 # libcrc32trim
 
-## Overview
-
 _libcrc32trim_ currently exposes two functions, `crc32_trim_leading()` and
 `crc32_trim_trailing()`. These provide opposite functionality to that of
 _[zlib's](https://github.com/madler/zlib)_ `crc32_combine()`.
