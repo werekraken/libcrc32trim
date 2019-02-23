@@ -1,6 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Wcast-align -Wcast-qual -Wimplicit -Wpointer-arith -Wredundant-decls -Wreturn-type -Wshadow
+ifndef PREFIX
 PREFIX = /usr/local
+endif
 
 all: libcrc32trim.so
 
