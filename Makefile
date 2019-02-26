@@ -4,26 +4,36 @@ ifndef PREFIX
 PREFIX = /usr/local
 endif
 
-all: libcrc32trim.so
+include VERSION
+
+SHAREDLIB=libcrc32trim.so
+SHAREDLIBV=libcrc32trim.so.$(LIBCRC32TRIM_VERSION)
+SHAREDLIBM=libcrc32trim.so.$(firstword $(subst ., ,$(LIBCRC32TRIM_VERSION)))
+
+all: $(SHAREDLIBV)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -fpic -c -o $@ $<
 
-libcrc32trim.so: crc32trim.o
-	$(CC) -shared -o libcrc32trim.so crc32trim.o -lz
+$(SHAREDLIBV): crc32trim.o
+	$(CC) -shared -o $(SHAREDLIBV) crc32trim.o -lz
 
 .PHONY: clean
 clean:
-	rm -f crc32trim.o libcrc32trim.so
+	rm -f crc32trim.o $(SHAREDLIBV)
 
 .PHONY: install
-install: libcrc32trim.so
+install: $(SHAREDLIBV)
 	mkdir -p $(DESTDIR)$(PREFIX)/lib
 	mkdir -p $(DESTDIR)$(PREFIX)/include
-	install $^ $(DESTDIR)$(PREFIX)/lib/
+	install $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/
+	ln -s $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIB)
+	ln -s $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBM)
 	cp crc32trim.h $(DESTDIR)$(PREFIX)/include/
 
 .PHONY: uninstall
 uninstall:
-	rm $(DESTDIR)$(PREFIX)/lib/libcrc32trim.so
+	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIB)
+	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBM)
+	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBV)
 	rm $(DESTDIR)$(PREFIX)/include/crc32trim.h

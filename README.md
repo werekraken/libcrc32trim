@@ -77,6 +77,10 @@ If developing new tests, it can be convenient to keep the environment around for
 RUNNER_VAGRANT_DESTROY=false ./runner.sh
 ```
 
+## Versioning
+
+This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
 ## License
 
 _libcrc32trim_ is available as open source under the terms of the [zlib license](LICENSE).
