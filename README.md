@@ -63,6 +63,20 @@ crcA = crc32_trim_trailing(crcAB, crcB, lenB);
 // crcA contains 0xfeee8227UL, the crc32 for 'this'
 ```
 
+## Testing
+
+Vagrant is used for consistent test environments.
+
+To spin up the CentOS 7 enviroment, build, and run the tests use the following. This will clean up the vm.
+```
+./runner.sh
+```
+
+If developing new tests, it can be convenient to keep the environment around for several runs. This will leave the vm in place.
+```
+RUNNER_VAGRANT_DESTROY=false ./runner.sh
+```
+
 ## License
 
 _libcrc32trim_ is available as open source under the terms of the [zlib license](LICENSE).

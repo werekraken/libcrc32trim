@@ -35,5 +35,9 @@
 *.dSYM/
 *.su
 
+# Testing files
+/build/
+/Gemfile.lock
+
 # Vagrant
 /.vagrant/
