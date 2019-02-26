@@ -103,3 +103,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## License
 
 _libcrc32trim_ is available as open source under the terms of the [zlib license](LICENSE).
+
+## Compatibility
+
+_libcrc32trim_ is actively tested on CentOS 7, but is likely to work on other distros and Unix-like systems.
