@@ -29,6 +29,25 @@ These functions can also be used to compute the crc32 of a body trimmed of a
 known header and footer, when lengths of the body and footer are known, without
 needing the original stream.
 
+## Installation
+
+_libcrc32trim_ has build time dependencies on gcc, make, and zlib-devel. It also has a run time dependency on zlib. zlib installation is not explicitly included in the following steps since zlib is a dependency of zlib-devel. However, please take this into account when building and installing on separate hosts. These package names may vary slightly between distros.
+
+Install build time dependencies on CentOS.
+```
+sudo yum install gcc make zlib-devel
+```
+
+Build.
+```
+make
+```
+
+Install.
+```
+sudo make install
+```
+
 ## Usage
 
 ### crc32_trim_leading()
