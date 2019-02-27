@@ -1,9 +1,10 @@
 /* crc32trim.c
  *
- * Copyright (C) 2016-2019 Matt Cover
+ * Copyright (c) 2016-present Matt Cover
+ * All rights reserved.
  *
- * For conditions of distribution and use, see copyright notice in crc32trim.h
- * or LICENSE.
+ * This source code is licensed under the zlib license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * This code is borrows heavily from crc32.c found in zlib version 1.2.8, but
  * has been altered.
