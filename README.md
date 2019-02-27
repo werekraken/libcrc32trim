@@ -48,6 +48,13 @@ Install.
 sudo make install
 ```
 
+The vagrant environment can also be used to build an rpm.
+
+To spin up the CentOS 7 enviroment and build an rpm use the following. This will clean up the vm.
+```
+./runner.sh buildrpm
+```
+
 ## Usage
 
 ### crc32_trim_leading()
