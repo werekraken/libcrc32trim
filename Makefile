@@ -1,7 +1,16 @@
 CC = gcc
 CFLAGS = -Wall -Wcast-align -Wcast-qual -Wimplicit -Wpointer-arith -Wredundant-decls -Wreturn-type -Wshadow
+
 ifndef PREFIX
 PREFIX = /usr/local
+endif
+
+ifndef INCLUDEDIR
+INCLUDEDIR = $(PREFIX)/include
+endif
+
+ifndef LIBDIR
+LIBDIR = $(PREFIX)/lib
 endif
 
 include VERSION
@@ -24,16 +33,16 @@ clean:
 
 .PHONY: install
 install: $(SHAREDLIBV)
-	mkdir -p $(DESTDIR)$(PREFIX)/lib
-	mkdir -p $(DESTDIR)$(PREFIX)/include
-	install $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/
-	ln -s $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIB)
-	ln -s $(SHAREDLIBV) $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBM)
-	cp crc32trim.h $(DESTDIR)$(PREFIX)/include/
+	mkdir -p $(DESTDIR)$(LIBDIR)
+	mkdir -p $(DESTDIR)$(INCLUDEDIR)
+	install $(SHAREDLIBV) $(DESTDIR)$(LIBDIR)/
+	ln -s $(SHAREDLIBV) $(DESTDIR)$(LIBDIR)/$(SHAREDLIB)
+	ln -s $(SHAREDLIBV) $(DESTDIR)$(LIBDIR)/$(SHAREDLIBM)
+	cp crc32trim.h $(DESTDIR)$(INCLUDEDIR)/
 
 .PHONY: uninstall
 uninstall:
-	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIB)
-	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBM)
-	rm $(DESTDIR)$(PREFIX)/lib/$(SHAREDLIBV)
-	rm $(DESTDIR)$(PREFIX)/include/crc32trim.h
+	rm $(DESTDIR)$(LIBDIR)/$(SHAREDLIB)
+	rm $(DESTDIR)$(LIBDIR)/$(SHAREDLIBM)
+	rm $(DESTDIR)$(LIBDIR)/$(SHAREDLIBV)
+	rm $(DESTDIR)$(INCLUDEDIR)/crc32trim.h
