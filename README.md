@@ -1,23 +1,26 @@
 # libcrc32trim
 
-_libcrc32trim_ currently exposes two functions, `crc32_trim_leading()` and
-`crc32_trim_trailing()`. These provide opposite functionality to that of
-_[zlib's](https://github.com/madler/zlib)_ `crc32_combine()`.
+_libcrc32trim_ exposes a number of functions which perform combine and trim operations for several CRC-32 implementations.
 
+`crc32_combine_nz()`, `crc32c_combine()`, and `cksum_combine_no_len()` all perform a combine operation like _[zlib's](https://github.com/madler/zlib)_ `crc32_combine()`.
 ```c
-/*
- * NOTE: crc32_combine() is part of zlib and is included here for
- * demonstrative purposes only.
- */
-crcAB = crc32_combine(crcA, crcB, lenB);
+crcAB = crc32_combine_nz(crcA, crcB, lenB);
+crcAB = crc32c_combine(crcA, crcB, lenB);
+crcAB = cksum_combine_no_len(crcA, crcB, lenB);
 ```
 
+`crc32_trim_leading()`, `crc32c_trim_leading()`, and `cksum_trim_leading_no_len()` all perform a leading trim.
 ```c
 crcB = crc32_trim_leading(crcAB, crcA, lenB);
+crcB = crc32c_trim_leading(crcAB, crcA, lenB);
+crcB = cksum_trim_leading_no_len(crcAB, crcA, lenB);
 ```
 
+`crc32_trim_trailing()`, `crc32c_trim_trailing()`, and `cksum_trim_trailing_no_len()` all perform a trailing trim.
 ```c
 crcA = crc32_trim_trailing(crcAB, crcB, lenB);
+crcA = crc32c_trim_trailing(crcAB, crcB, lenB);
+crcA = cksum_trim_trailing_no_len(crcAB, crcB, lenB);
 ```
 
 The initial motivation for `crc32_trim_trailing()` was to compute the crc32 of
@@ -31,11 +34,11 @@ needing the original stream.
 
 ## Installation
 
-_libcrc32trim_ has build time dependencies on gcc, make, and zlib-devel. It also has a run time dependency on zlib. zlib installation is not explicitly included in the following steps since zlib is a dependency of zlib-devel. However, please take this into account when building and installing on separate hosts. These package names may vary slightly between distros.
+_libcrc32trim_ has build time dependencies on gcc and make. These package names may vary slightly between distros.
 
 Install build time dependencies on CentOS.
 ```
-sudo yum install gcc make zlib-devel
+sudo yum install gcc make
 ```
 
 Build.
@@ -50,7 +53,7 @@ sudo make install
 
 The vagrant environment can also be used to build an rpm.
 
-To spin up the CentOS 7 enviroment and build an rpm use the following. This will clean up the vm.
+To spin up the CentOS 7 environment and build an rpm use the following. This will clean up the vm.
 ```
 ./runner.sh buildrpm
 ```

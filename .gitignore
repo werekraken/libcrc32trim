@@ -38,6 +38,7 @@
 # Testing files
 /build/
 /Gemfile.lock
+/tmp/
 
 # RPM build files
 /rpmbuild/

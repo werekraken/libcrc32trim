@@ -14,15 +14,55 @@
 extern "C" {
 #endif
 
-#ifndef NO_ZLIB
+extern unsigned long crc32_combine_nz(
+    unsigned long crcA,
+    unsigned long crcB,
+    long lenB
+);
+
 extern unsigned long crc32_trim_leading(
     unsigned long crcAB,
     unsigned long crcA,
     long lenB
 );
-#endif
 
 extern unsigned long crc32_trim_trailing(
+    unsigned long crcAB,
+    unsigned long crcB,
+    long lenB
+);
+
+extern unsigned long crc32c_combine(
+    unsigned long crcA,
+    unsigned long crcB,
+    long lenB
+);
+
+extern unsigned long crc32c_trim_leading(
+    unsigned long crcAB,
+    unsigned long crcA,
+    long lenB
+);
+
+extern unsigned long crc32c_trim_trailing(
+    unsigned long crcAB,
+    unsigned long crcB,
+    long lenB
+);
+
+extern unsigned long cksum_combine_no_len(
+    unsigned long crcA,
+    unsigned long crcB,
+    long lenB
+);
+
+extern unsigned long cksum_trim_leading_no_len(
+    unsigned long crcAB,
+    unsigned long crcA,
+    long lenB
+);
+
+extern unsigned long cksum_trim_trailing_no_len(
     unsigned long crcAB,
     unsigned long crcB,
     long lenB
