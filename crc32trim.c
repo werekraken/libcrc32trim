@@ -195,6 +195,12 @@ unsigned long crc32_trim_leading(
     unsigned long crcA,
     long lenB
 ) {
+    if (lenB == 0 && crcAB == crcA)
+        return 0;
+
+    if (lenB <= 0)
+        return crcAB;
+
     return crc32_combine_nz(crcA, crcAB, lenB);
 }
 
@@ -226,6 +232,12 @@ unsigned long crc32c_trim_leading(
     unsigned long crcA,
     long lenB
 ) {
+    if (lenB == 0 && crcAB == crcA)
+        return 0;
+
+    if (lenB <= 0)
+        return crcAB;
+
     return crc32c_combine(crcA, crcAB, lenB);
 }
 
@@ -262,6 +274,12 @@ unsigned long crc32posix_trim_leading(
     unsigned long crcA,
     long lenB
 ) {
+    if (lenB == 0 && crcAB == crcA)
+        return 0xffffffff;
+
+    if (lenB <= 0)
+        return crcAB;
+
     return crc32posix_combine(crcA, crcAB, lenB);
 }
 
