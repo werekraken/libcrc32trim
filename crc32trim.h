@@ -50,19 +50,19 @@ extern unsigned long crc32c_trim_trailing(
     long lenB
 );
 
-extern unsigned long cksum_combine_no_len(
+extern unsigned long crc32posix_combine(
     unsigned long crcA,
     unsigned long crcB,
     long lenB
 );
 
-extern unsigned long cksum_trim_leading_no_len(
+extern unsigned long crc32posix_trim_leading(
     unsigned long crcAB,
     unsigned long crcA,
     long lenB
 );
 
-extern unsigned long cksum_trim_trailing_no_len(
+extern unsigned long crc32posix_trim_trailing(
     unsigned long crcAB,
     unsigned long crcB,
     long lenB

@@ -2,25 +2,25 @@
 
 _libcrc32trim_ exposes a number of functions which perform combine and trim operations for several CRC-32 implementations.
 
-`crc32_combine_nz()`, `crc32c_combine()`, and `cksum_combine_no_len()` all perform a combine operation like _[zlib's](https://github.com/madler/zlib)_ `crc32_combine()`.
+`crc32_combine_nz()`, `crc32c_combine()`, and `crc32posix_combine()` all perform a combine operation like _[zlib's](https://github.com/madler/zlib)_ `crc32_combine()`.
 ```c
 crcAB = crc32_combine_nz(crcA, crcB, lenB);
 crcAB = crc32c_combine(crcA, crcB, lenB);
-crcAB = cksum_combine_no_len(crcA, crcB, lenB);
+crcAB = crc32posix_combine(crcA, crcB, lenB);
 ```
 
-`crc32_trim_leading()`, `crc32c_trim_leading()`, and `cksum_trim_leading_no_len()` all perform a leading trim.
+`crc32_trim_leading()`, `crc32c_trim_leading()`, and `crc32posix_trim_leading()` all perform a leading trim.
 ```c
 crcB = crc32_trim_leading(crcAB, crcA, lenB);
 crcB = crc32c_trim_leading(crcAB, crcA, lenB);
-crcB = cksum_trim_leading_no_len(crcAB, crcA, lenB);
+crcB = crc32posix_trim_leading(crcAB, crcA, lenB);
 ```
 
-`crc32_trim_trailing()`, `crc32c_trim_trailing()`, and `cksum_trim_trailing_no_len()` all perform a trailing trim.
+`crc32_trim_trailing()`, `crc32c_trim_trailing()`, and `crc32posix_trim_trailing()` all perform a trailing trim.
 ```c
 crcA = crc32_trim_trailing(crcAB, crcB, lenB);
 crcA = crc32c_trim_trailing(crcAB, crcB, lenB);
-crcA = cksum_trim_trailing_no_len(crcAB, crcB, lenB);
+crcA = crc32posix_trim_trailing(crcAB, crcB, lenB);
 ```
 
 The initial motivation for `crc32_trim_trailing()` was to compute the crc32 of

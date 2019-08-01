@@ -195,7 +195,7 @@ unsigned long crc32c_trim_trailing(
 }
 
 /* ========================================================================= */
-unsigned long cksum_combine_no_len(
+unsigned long crc32posix_combine(
     unsigned long crcA,
     unsigned long crcB,
     long lenB
@@ -211,16 +211,16 @@ unsigned long cksum_combine_no_len(
 }
 
 /* ========================================================================= */
-unsigned long cksum_trim_leading_no_len(
+unsigned long crc32posix_trim_leading(
     unsigned long crcAB,
     unsigned long crcA,
     long lenB
 ) {
-    return cksum_combine_no_len(crcA, crcAB, lenB);
+    return crc32posix_combine(crcA, crcAB, lenB);
 }
 
 /* ========================================================================= */
-unsigned long cksum_trim_trailing_no_len(
+unsigned long crc32posix_trim_trailing(
     unsigned long crcAB,
     unsigned long crcB,
     long lenB
