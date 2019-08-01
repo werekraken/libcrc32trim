@@ -14,6 +14,13 @@
 extern "C" {
 #endif
 
+extern unsigned long cksum_combine(
+    unsigned long crcA,
+    long lenA,
+    unsigned long crcB,
+    long lenB
+);
+
 extern unsigned long cksum_pop_len(
     unsigned long crc,
     long len
@@ -22,6 +29,20 @@ extern unsigned long cksum_pop_len(
 extern unsigned long cksum_push_len(
     unsigned long crc,
     long len
+);
+
+unsigned long cksum_trim_leading(
+    unsigned long crcAB,
+    long lenAB,
+    unsigned long crcA,
+    long lenA
+);
+
+unsigned long cksum_trim_trailing(
+    unsigned long crcAB,
+    long lenAB,
+    unsigned long crcB,
+    long lenB
 );
 
 extern unsigned long crc32_combine_nz(

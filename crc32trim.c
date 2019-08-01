@@ -320,3 +320,81 @@ unsigned long cksum_push_len(
     crc &= 0xffffffff;
     return crc ^ 0xffffffff;
 }
+
+/* ========================================================================= */
+unsigned long cksum_combine(
+    unsigned long crcA,
+    long lenA,
+    unsigned long crcB,
+    long lenB
+) {
+    unsigned long crcAB;
+    long lenAB;
+
+    if (lenA <= 0 || lenB <= 0)
+        return crcA;
+
+    lenAB = lenA + lenB;
+
+    if (lenAB < lenA || lenAB < lenB)
+        return crcA;
+
+    crcA = cksum_pop_len(crcA, lenA);
+    crcB = cksum_pop_len(crcB, lenB);
+
+    crcAB = crc32posix_combine(crcA, crcB, lenB);
+
+    return cksum_push_len(crcAB, lenAB);
+}
+
+/* ========================================================================= */
+unsigned long cksum_trim_leading(
+    unsigned long crcAB,
+    long lenAB,
+    unsigned long crcA,
+    long lenA
+) {
+    unsigned long crcB;
+    long lenB;
+
+    if (lenAB <= 0 || lenA <= 0)
+        return crcAB;
+
+    lenB = lenAB - lenA;
+
+    if (lenB <= 0)
+        return crcAB;
+
+    crcAB = cksum_pop_len(crcAB, lenAB);
+    crcA  = cksum_pop_len(crcA,  lenA);
+
+    crcB = crc32posix_trim_leading(crcAB, crcA, lenB);
+
+    return cksum_push_len(crcB, lenB);
+}
+
+/* ========================================================================= */
+unsigned long cksum_trim_trailing(
+    unsigned long crcAB,
+    long lenAB,
+    unsigned long crcB,
+    long lenB
+) {
+    unsigned long crcA;
+    long lenA;
+
+    if (lenAB <= 0 || lenB <= 0)
+        return crcAB;
+
+    lenA = lenAB - lenB;
+
+    if (lenA <= 0)
+        return crcAB;
+
+    crcAB = cksum_pop_len(crcAB, lenAB);
+    crcB  = cksum_pop_len(crcB,  lenB);
+
+    crcA = crc32posix_trim_trailing(crcAB, crcB, lenB);
+
+    return cksum_push_len(crcA, lenA);
+}
