@@ -14,6 +14,16 @@
 extern "C" {
 #endif
 
+extern unsigned long cksum_pop_len(
+    unsigned long crc,
+    long len
+);
+
+extern unsigned long cksum_push_len(
+    unsigned long crc,
+    long len
+);
+
 extern unsigned long crc32_combine_nz(
     unsigned long crcA,
     unsigned long crcB,
