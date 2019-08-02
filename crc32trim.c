@@ -349,6 +349,9 @@ unsigned long cksum_combine(
     unsigned long crcAB;
     long lenAB;
 
+    if (lenA == 0 && crcA == 0xffffffff)
+        return crcB;
+
     if (lenA <= 0 || lenB <= 0)
         return crcA;
 
@@ -380,6 +383,9 @@ unsigned long cksum_trim_leading(
 
     lenB = lenAB - lenA;
 
+   if (lenB == 0 && crcAB == crcA)
+        return 0xffffffff;
+
     if (lenB <= 0)
         return crcAB;
 
@@ -405,6 +411,9 @@ unsigned long cksum_trim_trailing(
         return crcAB;
 
     lenA = lenAB - lenB;
+
+    if (lenA == 0 && crcAB == crcB)
+        return 0xffffffff;
 
     if (lenA <= 0)
         return crcAB;
