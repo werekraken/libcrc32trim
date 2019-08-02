@@ -31,14 +31,14 @@ extern unsigned long cksum_push_len(
     long len
 );
 
-unsigned long cksum_trim_leading(
+extern unsigned long cksum_trim_leading(
     unsigned long crcAB,
     long lenAB,
     unsigned long crcA,
     long lenA
 );
 
-unsigned long cksum_trim_trailing(
+extern unsigned long cksum_trim_trailing(
     unsigned long crcAB,
     long lenAB,
     unsigned long crcB,
