@@ -25,7 +25,7 @@ all: $(SHAREDLIBV)
 	$(CC) $(CFLAGS) -fpic -c -o $@ $<
 
 $(SHAREDLIBV): crc32trim.o
-	$(CC) -shared -o $(SHAREDLIBV) crc32trim.o -lz
+	$(CC) -shared -o $(SHAREDLIBV) crc32trim.o
 
 .PHONY: clean
 clean:
